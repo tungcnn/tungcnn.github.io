@@ -27,7 +27,7 @@ app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
 
-app.post('/api/authenticate', (req, res) => {
+app.post('https://treasurehunt-sit-209.sontungcnn.now.sh/api/authenticate', (req, res) => {
     const { user, password } = req.body;
     console.log(req.body)
     User.find({ username: user, password: password }, (err, result) => {
