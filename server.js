@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const port = process.env.PORT || 3000;
-const base = `${__dirname}/public`;
+const base = `${__dirname}`;
 
 app.use(express.static('public'));
 
