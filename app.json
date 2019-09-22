@@ -1,7 +1,7 @@
 {
     "name": "Treasure Hunt",
     "description": "A game",
-    "repository": "",
+    "repository": "https://github.com/tungcnn/tungcnn.github.io",
     "keywords": ["node", "express", "static"],
     "image": "heroku/nodejs"
 }

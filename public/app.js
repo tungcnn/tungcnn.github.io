@@ -1,7 +1,7 @@
 $('#navbar').load('navbar.html');
 $('#footer').load('footer.html');
 
-const API_URL = 'https://tungcnn.github.io/hannoying.github.io';
+const API_URL = 'https://hannoying.herokuapp.com';
 
 $.get(`${API_URL}/homepage`)
    
