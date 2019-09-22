@@ -1,0 +1,39 @@
+{
+	"version": 2,
+	"builds": [
+		{ "src": "api.js", "use": "@now/node" },
+		{ "src": "public/generated-docs/**", "use": "@now/static" }
+	],
+	"alias": "Treasurehunt-sit-209",
+	"name": "Treasurehunt-sit-209",
+	"routes": [
+	  {
+		"src": "/docs",
+		"dest": "api.js",
+		"methods": ["GET"]
+	  },
+	  {
+		"src": "/api/send-command",
+		"dest": "api.js",
+		"methods": ["POST"]
+	  },
+	  {
+		"src": "/api/authenticate",
+		"dest": "api.js",
+		"methods": ["POST"]
+	  },
+	  {
+		"src": "/api/register",
+		"dest": "api.js",
+		"methods": ["POST"]
+	  },
+
+	  {
+		"src": "/(.*)",
+		"dest": "public/generated-docs/$1"
+	  }
+	],
+	"env": {
+		"MONGO_URL": "mongodb+srv://tungnguyen:21011998@sit209-gzop8.mongodb.net/test"
+	}
+  }
