@@ -26,7 +26,9 @@ app.use(express.static(`${__dirname}/public`));
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
-
+app.get('/api/test', (req, res) => {
+    res.send('The API is working!');
+});
 app.post('/api/authenticate', (req, res) => {
     const { user, password } = req.body;
     console.log(req.body)
