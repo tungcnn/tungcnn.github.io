@@ -31,6 +31,12 @@
 	  {
 		"src": "/(.*)",
 		"dest": "public/generated-docs/$1"
+	  },
+	  {
+		  "src": ".*", "headers":
+		  {
+			  "Access-Control-Allow-Origin": "*"
+		  }
 	  }
 	],
 	"env": {
