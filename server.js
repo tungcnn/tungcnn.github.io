@@ -45,8 +45,8 @@ app.get('/progress', (req, res) => {
 app.get('/virtual_items', (req, res) => {
     res.sendFile(`${base}/virtual_items.html`);
    });
-   app.get('/marker', (req, res) => {
-    res.sendFile(`${base}/marker.html`);
+   app.get('/journey', (req, res) => {
+    res.sendFile(`${base}/journey.html`);
    });
    app.get('/marker', (req, res) => {
     res.sendFile(`${base}/marker.html`);
