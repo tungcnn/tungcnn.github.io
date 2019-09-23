@@ -48,6 +48,9 @@ app.get('/virtual_items', (req, res) => {
    app.get('/marker', (req, res) => {
     res.sendFile(`${base}/marker.html`);
    });
+   app.get('/marker', (req, res) => {
+    res.sendFile(`${base}/marker.html`);
+   });
 app.get('*', (req, res) => {
     res.sendFile(`${base}/404.html`);
    });
