@@ -4,8 +4,8 @@
 		{ "src": "api.js", "use": "@now/node" },
 		{ "src": "public/generated-docs/**", "use": "@now/static" }
 	],
-	"alias": "Treasurehunt-sit-209",
-	"name": "Treasurehunt-sit-209",
+	"alias": "treasurehunt-sit-209",
+	"name": "treasurehunt-sit-209",
 	"routes": [
 	  {
 		"src": "/docs",

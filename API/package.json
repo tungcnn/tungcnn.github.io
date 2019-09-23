@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "api build",
-    "start": "nodemon -r dotenv/config api.js"
+    "start": "nodemon -r dotenv/config api.js",
+    "deploy": "now remove <your-student-id>-sit-209 -y && now -p && now alias"
   },
   "author": "Tung",
   "license": "ISC",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.1.0",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "now": "^16.2.0"
   }
 }
