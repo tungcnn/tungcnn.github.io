@@ -1,10 +1,11 @@
 $('#navbar').load('navbar.html');
 $('#footer').load('footer.html');
 
-const API_URL = 'https://cors-anywhere.herokuapp.com/https://treasurehunt-sit-209.sontungcnn.now.sh/api';
+// const API_URL = 'https://cors-anywhere.herokuapp.com/https://treasurehunt-sit-209.sontungcnn.now.sh/api';
 
+const API_URL = 'https://treasurehunt-sit-209.sontungcnn.now.sh/api';
 
-// $.get(`${API_URL}/homepage`)
+$.get(`http://hannoying.herokuapp.com/homepage`)
    
 $('#register').on('click', function () {
     const user = $('#user').val();
