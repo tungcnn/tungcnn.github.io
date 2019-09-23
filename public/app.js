@@ -3,7 +3,7 @@ $('#footer').load('footer.html');
 
 // const API_URL = 'https://cors-anywhere.herokuapp.com/https://treasurehunt-sit-209.sontungcnn.now.sh/api';
 
-const API_URL = 'https://treasurehunt-sit-209.sontungcnn.now.sh/api';
+const API_URL = 'https://treasurehunt-sit-209.now.sh/api';
 
 $.get(`http://hannoying.herokuapp.com/homepage`)
    
