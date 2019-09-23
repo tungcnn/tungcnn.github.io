@@ -1,7 +1,7 @@
 $('#navbar').load('navbar.html');
 $('#footer').load('footer.html');
 
-const API_URL = 'https://hannoying.herokuapp.com';
+const API_URL = 'https://treasurehunt-sit-209.sontungcnn.now.sh';
 
 $.get(`${API_URL}/homepage`)
    

@@ -1,9 +1,10 @@
 class Location
 {
-    constructor(name, array)
+    constructor(name, array, instruction)
     {
         this.placeName = name;
         this.position = array;
+        this.instruction = instruction
     }
     distince(checkPo)
     {
@@ -54,7 +55,7 @@ function thePosition(position) {
     {
         if (i != (quest.length - 1))
         {
-            x.innerHTML = "you've reached your location, the next one is " + quest[i + 1].placeName;
+            x.innerHTML = "you've reached your location, please" + quest[i].instruction+  " the next one is " + quest[i + 1].placeName;
         }
         else
         {
