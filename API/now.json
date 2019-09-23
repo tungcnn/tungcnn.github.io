@@ -7,17 +7,12 @@
 	"alias": "treasurehunt-sit-209",
 	"name": "treasurehunt-sit-209",
 	"routes": [
-	  {
-		"src": "/docs",
-		"dest": "api.js",
-		"methods": ["GET"]
-	  },
-	  {
-		"src": "/api/send-command",
-		"dest": "api.js",
-		"methods": ["POST"]
-	  },
-	  {
+		{
+			"src": "/api/test",
+			"dest": "api.js",
+			"methods": ["GET"]
+		},
+	{
 		"src": "/api/authenticate",
 		"dest": "api.js",
 		"methods": ["POST"]

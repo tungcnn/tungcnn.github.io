@@ -29,6 +29,7 @@
     "express"
   ],
   "devDependencies": {
+    "heroku": "^7.30.0",
     "nodemon": "^1.19.2"
   }
 }
