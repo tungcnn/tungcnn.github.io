@@ -29,7 +29,8 @@ $('#login').on('click', () => {
     $.post(`${API_URL}/authenticate`, { user, password })
     .then((response) =>{
         if (response.success) {
-            localStorage.setItem('token', response.token);
+            localStorage.setItem('user', user);
+            localStorage.setItem('isAdmin', response.isAdmin);
             location.href = '/playerhomepage';
     } else {
         $('#message').append(`<p class="alert alert-danger">${response}</p>`);
@@ -40,14 +41,15 @@ $('#login').on('click', () => {
 $('#loginstore').on('click', () => {
     const user = $('#user').val();
     const password = $('#password').val();
-    $.post(` ${API_URL}/authenticate ` , { user, password })
+    $.post(`${API_URL}/authenticate`, { user, password })
     .then((response) =>{
-    if (response.success) {
-        localStorage.setItem('token', response.token);
-        location.href = '/store';
+        if (response.success) {
+            localStorage.setItem('user', user);
+            localStorage.setItem('isAdmin', response.isAdmin);
+            location.href = '/store';
     } else {
-        $('#message').append( ` <p class="alert alert-danger">${response}< /p>`);
-    }
+        $('#message').append(`<p class="alert alert-danger">${response}</p>`);
+        }
     });
 });
    

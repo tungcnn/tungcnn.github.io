@@ -34,22 +34,21 @@ app.listen(port, () => {
 
 app.post('/api/authenticate', (req, res) => {
     const { user, password } = req.body;
-    console.log(req.body)
-    User.find({ username: user, password: password }, (err, result) => {
+    User.find({username:user}, (err, result) => {
         if (err) {
-            return res.status(404).send(err);
+            return res.send(err);
         } else {
-            if (result.length < 1) {
-                return res.status(404).send('Wrong user name or password');
+            if (result.length <1) {
+                return res.send('No user found');
             } else {
-                try {
-                    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+                if (password !== password) {
+                    return res.send('Password does not match');
+                } else {
                     return res.json({
                         success: true,
-                        token: token
+                        message: 'Authenticated successfully',
+                        // isAdmin: found.isAdmin
                     });
-                } catch (err) {
-                    return res.status(404).send(err);
                 }
             }
         }
@@ -86,18 +85,18 @@ app.post('/api/registration', (req, res) => {
     })
 });
 
-// --------- Authorization Middleware ---------
-app.use(function(req, res, next) {
-    if (!req.headers.authorization) {
-      return res.status(403).json({ error: 'No credentials sent!' });
-    }
-    const token = req.headers.authorization.split(" ")[1];
-    jwt.verify(token, jwt_key, (err, decoded) => {
-      if (err) return res.json({error: err})
-      req.user_id = decoded._id;
-      next();
-    });
-  });
+// // --------- Authorization Middleware ---------
+// app.use(function(req, res, next) {
+//     if (!req.headers.authorization) {
+//       return res.status(403).json({ error: 'No credentials sent!' });
+//     }
+//     const token = req.headers.authorization.split(" ")[1];
+//     jwt.verify(token, jwt_key, (err, decoded) => {
+//       if (err) return res.json({error: err})
+//       req.user_id = decoded._id;
+//       next();
+//     });
+//   });
 
 app.get('/api/testjwt', (req, res) => {
     res.send('The JWT is working!');
