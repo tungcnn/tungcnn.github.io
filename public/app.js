@@ -23,6 +23,38 @@ $('#register').on('click', function () {
     )};
 });
 
+$('Markers').on('click', function() {  
+    location.href = '/virtual_items'
+    });
+
+$('#storeregister').on('click', function() {
+    const name = $('#username').val();
+    const password = $('#password').val();
+    const confirmPassword = $('#confirm-password').val();
+    const lat = $('#lat').val();
+    const lon = $('#lon').val();
+    const instr = $('#instr').val();
+    const exists = stores.find(store => store.name === name);
+
+    if (exists == undefined && password === confirmPassword)
+    {
+        $.post(`${API_URL}/storeregistration`, { name, password, lat, lon, instr })
+        .then((response) =>{
+        if (response.success) {
+            location.href = '/login';
+            } 
+        else {
+            $('#message').append(`${response}`);
+        }
+        });
+    }
+    else
+    {
+        var newText = "The account've already existed or the confirm password is not match";
+        $('#message').text(newText);
+    }
+});
+
 $('#login').on('click', () => {
     const user = $('#user').val();
     const password = $('#password').val();

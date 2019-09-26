@@ -21,6 +21,9 @@ app.get('/', function (req, res) {
 app.get('/playerhomepage', (req, res) => {
     res.sendFile(`${base}/playerhomepage.html`);
    });
+app.get('/storeregistration', (req, res) => {
+    res.sendFile(`${base}/storeregistration.html`);
+   });
    app.get('/store', (req, res) => {
     res.sendFile(`${base}/store.html`);
    });

@@ -85,6 +85,41 @@ app.post('/api/registration', (req, res) => {
     })
 });
 
+app.post('/api/storeregistration', (req, res) => {  
+    const { name, password, lat, lon, instr} = req.body;
+    Store.findOne({name, password, lat, lon, instr}, (err, stores) => {
+        if (err == true) return res.send(err);
+        else if (stores == undefined) 
+        {
+        const newStore = new Store({
+            name,
+            password,
+            lat,
+            lon,
+            instr
+           });
+    
+        newStore.save(err => {
+            return err
+                ? res.send(err)
+                : res.json({
+                success: true,
+                message: 'Created new store'
+                });
+        });  
+    }
+        else return res.send('Store already existed')
+    }); 
+});
+
+app.get('/api/listStores', (req, res) => {
+    Store.find({}, (err, stores) => {
+        return err
+        ? res.send(err)
+        : res.send(stores);
+    });
+});
+
 // // --------- Authorization Middleware ---------
 // app.use(function(req, res, next) {
 //     if (!req.headers.authorization) {
