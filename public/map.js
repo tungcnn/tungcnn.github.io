@@ -1,5 +1,5 @@
 $('#footer').load('footer.html');
-const API_URL = 'http://localhost:5000/api'; 
+const API_URL = 'https://treasurehunt-sit-209.now.sh/api'; 
 
 $.get(`${API_URL}/listStores`) 
 .then(response => {  

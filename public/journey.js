@@ -1,5 +1,5 @@
 $('#footer').load('footer.html');
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://treasurehunt-sit-209.now.sh/api';
 
 var quest;
 $.get(`${API_URL}/listStores`) 
@@ -55,6 +55,7 @@ function thePosition(position) {
         if (i != (quest.length - 1))
         {
             x.innerHTML = "you've reached your location, please do the this instruction: " + quest[i].instr + ", then move to the next one is " + quest[i + 1].name;
+            i++;
         }
         else
         {
