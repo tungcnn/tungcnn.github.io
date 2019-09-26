@@ -22,6 +22,16 @@
 		"dest": "api.js",
 		"methods": ["POST"]
 	  },
+	  {
+		"src": "/api/storeregistration",
+		"dest": "api.js",
+		"methods": ["POST"]
+	  },
+	  {
+		"src": "/api/listStores",
+		"dest": "api.js",
+		"methods": ["GET"]
+	  },
 
 	  {
 		"src": "/(.*)",
