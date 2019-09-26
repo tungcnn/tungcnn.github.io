@@ -1,9 +1,12 @@
-// $('#footer').load('footer.html');
+$('#footer').load('footer.html');
 const API_URL = 'http://localhost:5000/api'; 
+
+$.get(`${API_URL}/listStores`) 
+.then(response => {  
 
     map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());
-    var lonLat = new OpenLayers.LonLat( 145.114364, -37.847387)
+    var lonLat = new OpenLayers.LonLat( response[0].lon, response[0].lat)
           .transform(
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
             map.getProjectionObject() // to Spherical Mercator Projection
@@ -22,17 +25,18 @@ const API_URL = 'http://localhost:5000/api';
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
             map.getProjectionObject() // to Spherical Mercator Projection
           );
-        markers.addMarker(new OpenLayers.Marker(nowPo,icon));
+        var player = new OpenLayers.Layer.Markers( "Markers" );
+        map.addLayer(player);
+        player.addMarker(new OpenLayers.Marker(nowPo,icon));
         var zoom=18;
         map.setCenter (nowPo, zoom);
     }
     
     markers.events.register("click", markers, function()
     {
-        location.href = "journey.html"
-
-        // $.get(`${API_URL}/api/quest`)   
-        //     .then(response => {     
-        //         response.map(sensorData => {   
-        //         });  
+        location.href = "journey.html" 
     });
+  }) 
+  .catch(error => {     
+    console.error(`Error: ${error}`);   
+  }); 
