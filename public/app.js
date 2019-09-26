@@ -3,7 +3,7 @@ $('#footer').load('footer.html');
 
 const API_URL = 'https://treasurehunt-sit-209.now.sh/api';
 
-   
+const stores = JSON.parse(localStorage.getItem('stores')) || [];  
 $('#register').on('click', function () {
     const user = $('#user').val();
     const password = $('#password').val();

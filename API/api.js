@@ -6,6 +6,7 @@ const alert = require('alert-node') ;
 
 mongoose.connect('mongodb+srv://tungnguyen:21011998@sit209-gzop8.mongodb.net/test', { useNewUrlParser: true });; /*process.env.MONGO_URL, { useNewUrlParser: true }**/
 const User = require('./models/user');
+const Store = require('./models/store');
 
 const app = express();
 const bodyParser = require('body-parser');
