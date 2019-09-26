@@ -9,17 +9,18 @@ const User = require('./models/user');
 const Store = require('./models/store');
 
 const app = express();
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors());
 const port = process.env.PORT || 5000;
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+
 
 
 
@@ -55,6 +56,42 @@ app.post('/api/authenticate', (req, res) => {
         }
     })
 });
+
+app.post('/api/storeauthenticate', (req, res) => {
+    const { user, password } = req.body;
+    Store.find({name:user}, (err, result) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            if (result.length <1) {
+                return res.send('No user found');
+            } else {
+                if (password !== password) {
+                    return res.send('Password does not match');
+                } else {
+                    return res.json({
+                        success: true,
+                        message: 'Authenticated successfully',
+                        // isAdmin: found.isAdmin
+                    });
+                }
+            }
+        }
+    })
+});
+
+// app.post('/api/storeauthenticate', (req, res) => {   
+//     const { name, password } = req.body;
+
+//     Store.findOne({name, password}, (err, stores) => {     
+//         if (err == true) return res.send(err);
+//         else if (stores == undefined) return res.send('store does not exist');
+//         else return res.json({
+//             success: true,
+//             message: 'authenicated successfully'
+//         });
+//     }); 
+// });
     
 app.post('/api/registration', (req, res) => {
     const { user, password
