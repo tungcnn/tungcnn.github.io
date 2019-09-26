@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const alert = require('alert-node') ;
 
-mongoose.connect('mongodb+srv://tungnguyen:21011998@sit209-gzop8.mongodb.net/test'); /*process.env.MONGO_URL, { useNewUrlParser: true }**/
+mongoose.connect('mongodb+srv://tungnguyen:21011998@sit209-gzop8.mongodb.net/test', { useNewUrlParser: true });; /*process.env.MONGO_URL, { useNewUrlParser: true }**/
 const User = require('./models/user');
 
 const app = express();
@@ -22,13 +22,14 @@ app.use(function (req, res, next) {
 
 app.use(express.static(`${__dirname}/public`));
 
+app.get('/api/test', (req, res) => {
+    res.send('The API is working!');
+});
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
-app.get('/api/test', (req, res) => {
-    res.send('The API is working!');
-});
+
 app.post('/api/authenticate', (req, res) => {
     const { user, password } = req.body;
     console.log(req.body)

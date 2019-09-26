@@ -15,9 +15,9 @@ class Location
     }
 }
 
-place1 = new Location("Building B somwehere", [145.114364, -37.847387]);
-place2 = new Location("Food for thought", [145.114850, -37.848781]);
-place3 = new Location("Caffeine", [145.113656, -37.846209]);
+place1 = new Location("Building B somwehere", [145.114364, -37.847387], "run like a cat");
+place2 = new Location("Food for thought", [145.114850, -37.848781], "Buy 1 coffee");
+place3 = new Location("Caffeine", [145.113656, -37.846209], "Buy 2 coffee and meow meow");
 
 var quest = [place1, place2, place3];
 
