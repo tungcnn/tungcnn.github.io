@@ -20,11 +20,13 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(express.static(`${__dirname}/public`));
+
 
 app.get('/api/test', (req, res) => {
     res.send('The API is working!');
 });
+
+app.use(express.static(`${__dirname}/public`));
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
@@ -35,20 +37,19 @@ app.post('/api/authenticate', (req, res) => {
     console.log(req.body)
     User.find({ username: user, password: password }, (err, result) => {
         if (err) {
-            return res.send(err);
+            return res.status(404).send(err);
         } else {
             if (result.length < 1) {
-                alert('Wrong user name or password');
+                return res.status(404).send('Wrong user name or password');
             } else {
                 try {
                     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-                    console.log(`The token is ${token}`);
                     return res.json({
                         success: true,
                         token: token
                     });
                 } catch (err) {
-                    return res.send(err);
+                    return res.status(404).send(err);
                 }
             }
         }
@@ -56,18 +57,21 @@ app.post('/api/authenticate', (req, res) => {
 });
     
 app.post('/api/registration', (req, res) => {
-    const { user, password } = req.body;
+    const { user, password
+        // isAdmin 
+    } = req.body;
     User.find({ username: user }, (err, result) => {
         if (err) {
             return res.send(err);
         } else {
             if (result.length > 0) {
-                alert('User already existed');
+                return res.json('User already existed');
             }
             else {
                 const newUser = new User({
                     username: user,
-                    password: password
+                    password,
+                    // isAdmin
                 });
                 newUser.save(err => {
                     return err

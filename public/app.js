@@ -9,7 +9,7 @@ $('#register').on('click', function () {
     const password = $('#password').val();
     const confirm = $('#confirm').val();
     if (password !== confirm) {
-        $('#message').append(`<p class="alert alert-danger">${response}</p>`);
+        return res.send('Password do not match');
     } else {
         $.post(`${API_URL}/registration`, {user, password})
         .then((response) => {
@@ -36,10 +36,11 @@ $('#login').on('click', () => {
         }
     });
 });
+
 $('#loginstore').on('click', () => {
     const user = $('#user').val();
     const password = $('#password').val();
-    $.post( ` ${API_URL}/authenticate ` , { user, password })
+    $.post(` ${API_URL}/authenticate ` , { user, password })
     .then((response) =>{
     if (response.success) {
         localStorage.setItem('token', response.token);

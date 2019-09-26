@@ -18,7 +18,7 @@
 		"methods": ["POST"]
 	  },
 	  {
-		"src": "/api/register",
+		"src": "/api/registration",
 		"dest": "api.js",
 		"methods": ["POST"]
 	  },

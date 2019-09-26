@@ -5,9 +5,9 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "api build",
     "start": "nodemon -r dotenv/config api.js",
-    "deploy": "now remove <your-student-id>-sit-209 -y && now -p && now alias"
+    "build": "api build",
+    "deploy": "now remove treasurehunt-sit-209 -y && now -p && now alias"
   },
   "author": "Tung",
   "license": "ISC",
